@@ -26,7 +26,15 @@ namespace app.Controllers
 
         public IActionResult Privacy()
         {
-            throw new Exception("Just some exception");
+            try
+            {
+                throw new Exception("Just some exception");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An unknown error occurred on the Privacy action of the HomeController");
+                throw;
+            }
             return View();
         }
 
