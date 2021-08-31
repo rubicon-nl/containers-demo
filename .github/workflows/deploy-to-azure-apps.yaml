@@ -21,7 +21,7 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t acrcontainerdemox.azurecr.io/dotnetapp:${{ github.sha }}
+        docker build /dotnetapp -t acrcontainerdemox.azurecr.io/dotnetapp:${{ github.sha }}
         docker push acrcontainerdemox.azurecr.io/dotnetapp:${{ github.sha }}
 
     - uses: azure/webapps-deploy@v2
