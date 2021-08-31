@@ -27,6 +27,7 @@ jobs:
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'app-container-demo'
+        registry: 'acrcontainerdemox.azurecr.io'
         images: 'acrcontainerdemox.azurecr.io/dotnetapp:${{ github.sha }}'
     
     - name: Azure logout
