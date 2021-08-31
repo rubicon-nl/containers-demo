@@ -27,8 +27,7 @@ jobs:
     - uses: azure/appservice-settings@v1
       with:
         app-name: 'app-container-demo-db'
-        general-settings-json: '{"WEBSITES_PORT": "1433", "SA_PASSWORD": "Your_password123", "ACCEPT_EULA": "Y"}' #'General configuration settings as Key Value pairs'
-      id: settings
+        general-settings-json: '{"WEBSITES_PORT": "1433", "SA_PASSWORD": "Your_password123", "ACCEPT_EULA": "Y"}'
 
     - uses: azure/webapps-deploy@v2
       with:
@@ -41,8 +40,7 @@ jobs:
         app-name: 'app-container-demo'
         # app-settings-json: '${{ secrets.APP_SETTINGS }}' 
         # connection-strings-json: '${{ secrets.CONNECTION_STRINGS }}'
-        general-settings-json: '{"ASPNETCORE_ENVIRONMENT": "Production"}' #'General configuration settings as Key Value pairs'
-      id: settings
+        general-settings-json: '{"ASPNETCORE_ENVIRONMENT": "Production"}'
 
     # az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings DB_HOST="myownserver.mysql.database.azure.com"
 
