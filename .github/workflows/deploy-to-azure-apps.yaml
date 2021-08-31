@@ -27,7 +27,7 @@ jobs:
     - uses: azure/appservice-settings@v1
       with:
         app-name: 'app-container-demo-db'
-        app-settings-json: '[{"name": "WEBSITES_PORT", "value": "1433"}, {"name": "SA_PASSWORD", "value": "Your_password123"), {"name": "ACCEPT_EULA", "value": "Y"}]'
+        app-settings-json: '[{"name": "WEBSITES_PORT", "value": "1433"}, {"name": "SA_PASSWORD", "value": "Your_password123"}, {"name": "ACCEPT_EULA", "value": "Y"}]'
 
     - uses: azure/webapps-deploy@v2
       with:
