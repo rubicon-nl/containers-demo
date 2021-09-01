@@ -1,4 +1,4 @@
-name: Linux Container Node Workflow
+name: Build and publish to Azure
 
 on: [push]
 
