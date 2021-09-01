@@ -25,7 +25,7 @@ jobs:
     - uses: azure/appservice-settings@v1 
       with: 
         app-name: 'app-container-demo' 
-        app-settings-json: '[{"name": "ASPNETCORE_ENVIRONMENT", "value": "Production"}, {"name": "DOCKER_REGISTRY_SERVER_URL", "value": "https://acrcontainerdemox.azurecr.io"}, {"name": "DOCKER_REGISTRY_SERVER_USERNAME", "value": "${{ secrets.REGISTRY_USERNAME }}"}, {"name": "DOCKER_REGISTRY_SERVER_PASSWORD", "value": "${{ secrets.REGISTRY_PASSWORD }}"}]' 
+        app-settings-json: '[{"name": "ASPNETCORE_ENVIRONMENT", "value": "Production"}]' 
  
     - uses: azure/webapps-deploy@v2 
       with: 
