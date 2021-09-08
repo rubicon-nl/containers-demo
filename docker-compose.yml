@@ -1,0 +1,53 @@
+version: "3.9"
+services: 
+
+  web:  
+    build: dotnetapp 
+    container_name: web 
+    environment: 
+      ASPNETCORE_ENVIRONMENT: Development 
+      ASPNETCORE_URLS: http://+:80 
+    ports: 
+      - "8000:80" 
+    depends_on: 
+      - db 
+ 
+  db: 
+    image: "mcr.microsoft.com/mssql/server" 
+    container_name: db 
+
+    ports: 
+      - "1433:1433" 
+    environment: 
+      SA_PASSWORD: "My_password123" 
+      ACCEPT_EULA: "Y" 
+ 
+  elastic: 
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0 
+    container_name: elastic 
+    environment: 
+      - node.name=elastic 
+      - discovery.type=single-node 
+      - bootstrap.memory_lock=true 
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" 
+    ulimits: 
+      memlock: 
+        soft: -1 
+        hard: -1 
+    volumes: 
+      - data01:/usr/share/elasticsearch/data 
+    ports: 
+      - 9200:9200 
+ 
+  kibana: 
+    image: docker.elastic.co/kibana/kibana:7.14.0 
+    container_name: kibana 
+    ports: 
+      - 5601:5601 
+    environment: 
+      ELASTICSEARCH_URL: http://elastic:9200 
+      ELASTICSEARCH_HOSTS: '["http://elastic:9200"]' 
+ 
+volumes: 
+  data01: 
+    driver: local 
